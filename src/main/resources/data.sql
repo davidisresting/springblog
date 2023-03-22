@@ -1,0 +1,26 @@
+DROP TABLE IF EXISTS Comments;
+DROP TABLE IF EXISTS Posts;
+
+CREATE TABLE Posts (
+    id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(50) NOT NULL,
+    description VARCHAR(500) NOT NULL,
+    body LONGTEXT DEFAULT NULL,
+    slug VARCHAR(60) DEFAULT NULL,
+    post_status ENUM('DRAFT', 'PUBLISHED'),
+    created_at TIMESTAMP DEFAULT NULL,
+    updated_at TIMESTAMP DEFAULT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE Comments (
+    id INT NOT NULL AUTO_INCREMENT,
+    post_id INT NOT NULL,
+    title VARCHAR(200) NOT NULL,
+    author VARCHAR(200) NOT NULL,
+    body LONGTEXT DEFAULT NULL,
+    created_at DATETIME DEFAULT NULL,
+    updated_at DATETIME DEFAULT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (post_id) REFERENCES Posts(id)
+);

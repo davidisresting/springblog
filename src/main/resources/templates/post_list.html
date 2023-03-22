@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Spring Blog</title>
+</head>
+<body>
+    <h1 th:text="#{blog.title}">Welcome to Spring Blog</h1>
+    <div th:each="post : ${posts}">
+        <h3 th:text="${post.title}"></h3>
+        <h6 th:text="${post.description}"></h6>
+        <div th:text="${post.body}"></div>
+    </div>
+    <div>
+        <a href="/posts/add" th:text="#{blog.newpost}">Create Post</a>
+    </div>
+</body>
+</html>
